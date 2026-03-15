@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MyDrugs - Product Grid</title>
+    <script>
+        let counter=0;
+
+        function curt(){
+            counter++;
+             document.querySelector("h4").innerHTML =counter;
+        }
+    </script>
+    <style>
+         /* Your original container styles */
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Your original box styles, applied to the product wrapper */
+        #container > .product-box {
+            background-color: green;
+            color: white; /* Added for text readability against green */
+            font-size: 20px;
+            margin: 20px;
+            padding: 20px;
+            width: 200px;
+            list-style-type: none; /* Cleans up the <ul> bullets */
+        }
+
+        /* Ensuring the product image fits inside your 200px box */
+        .product-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-top: 10px;
+        }
+        h1{
+            
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="curt">
+        <h5>Curt</h5>
+         <h4>0</h4>
+
+    </div>
+
+    <h1>MYDRUGS.COM</h1>
+
+    <div id="container">
+        {% for Newdrug in Newdrug %}
+            
+        <ul class="product-box">
+                <li>Product: {{ Newdrug.Name }}</li>
+                <li>Price: {{ Newdrug.Price }}</li>
+                <img src="{{ Newdrug.cover.url }}" alt="{{ Newdrug.Name }}">
+                <button onclick="curt()">Add to curt</button>
+            </ul>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
